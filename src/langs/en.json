@@ -1,0 +1,41 @@
+{
+  "translations": {
+    "ANSWERS": {
+      "TITLE": "Answers",
+      "TABLE": {
+        "MEMBER_HEAD": "Member",
+        "LABEL_HEAD": "Answer",
+        "CORRECT_HEAD": "Correct",
+        "TOOLTIP":  {
+          "CORRECT": "This answer is correct.",
+          "INCORRECT": "This answer is incorrect.",
+          "UNDEFINED": "No answer has been defined in the settings."
+        }
+      }
+    },
+    "SETTINGS": {
+      "TITLE": "Settings",
+      "SAVE_BTN": "Save",
+      "QUESTION": {
+        "TITLE": "Question"
+      },
+      "ANSWER": {
+        "TITLE": "Answer",
+        "INPUT": {
+          "KEY_HELP_WARNING": "Please, provide a key.",
+          "KEY_HELP_ERROR": "Please, make sure each key is unique.",
+          "KEY_LABEL": "Key",
+          "VALUE_LABEL": "Value",
+          "ANSWER_LABEL": "Answer"
+        }
+      },
+      "GENERAL": {
+        "TITLE": "General"
+      }
+    },
+    "PLAYER": {
+      "SAVED_MESSAGE": "Saved",
+      "SAVE_BUTTON": "Save"
+    }
+  }
+}
