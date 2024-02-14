@@ -24,7 +24,7 @@
     "@types/node": "20.10.4",
     "@types/react": "18.2.42",
     "@types/react-dom": "18.2.17",
-    "i18next": "23.7.11",
+    "i18next": "23.7.20",
     "lodash.isequal": "4.5.0",
     "lodash.sortby": "4.7.0",
     "lodash.uniqby": "4.7.0",
