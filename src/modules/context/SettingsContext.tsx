@@ -1,6 +1,11 @@
 import { FC, ReactElement, createContext, useContext } from 'react';
 
-import { AnswerSettings, QuestionSettingsType } from '@/config/appSettings';
+import {
+  AnswerSettings,
+  CharsSettings,
+  QuestionSettingsType,
+  RowsSettings,
+} from '@/config/appSettings';
 import { hooks, mutations } from '@/config/queryClient';
 
 import Loader from '../common/Loader';
@@ -10,6 +15,8 @@ import Loader from '../common/Loader';
 type AllSettingsType = {
   question: QuestionSettingsType;
   answer: AnswerSettings;
+  rows: RowsSettings;
+  chars: CharsSettings;
 };
 
 // default values for the data property of settings by name
@@ -20,6 +27,17 @@ const defaultSettingsValues: AllSettingsType = {
   answer: {
     content: '',
   },
+  // zero values means the setting is unset
+  rows: {
+    minRows: 0,
+    maxRows: 0,
+    numRows: 0,
+  },
+  // zero values means the setting is unset
+  chars: {
+    minChars: 0,
+    maxChars: 0,
+  },
 };
 
 // list of the settings names
@@ -27,6 +45,8 @@ const ALL_SETTING_NAMES = [
   // name of your settings
   'question',
   'answer',
+  'rows',
+  'chars',
 ] as const;
 
 // automatically generated types

@@ -5,3 +5,14 @@ export type QuestionSettingsType = {
 export type AnswerSettings = {
   content: string;
 };
+
+export type RowsSettings = {
+  numRows: number;
+  maxRows: number;
+  minRows: number;
+};
+
+export type CharsSettings = {
+  minChars: number;
+  maxChars: number;
+};

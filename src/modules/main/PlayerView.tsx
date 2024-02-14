@@ -1,7 +1,14 @@
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Box, Grid, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  FormControl,
+  FormHelperText,
+  Grid,
+  OutlinedInput,
+  Typography,
+} from '@mui/material';
 
 import { useLocalContext } from '@graasp/apps-query-client';
 import { AppData, PermissionLevel } from '@graasp/sdk';
@@ -26,6 +33,8 @@ const PlayerView = (): JSX.Element => {
   const {
     question,
     // answer: answerSavedState,
+    rows: { maxRows, minRows, numRows },
+    chars: { maxChars, minChars },
   } = useSettings();
   const { data: appData } = hooks.useAppData();
   const { mutate: postAppData } = mutations.usePostAppData();
@@ -51,8 +60,17 @@ const PlayerView = (): JSX.Element => {
       return true;
     }
     // disable if answer is equal
-    return isEqual(savedAnswer, answer);
-  }, [answer, savedAnswer, permission]);
+    if (isEqual(savedAnswer, answer)) {
+      return true;
+    }
+
+    // disable if minimum length is not achieved
+    if (answer.length < minChars) {
+      return true;
+    }
+
+    return false;
+  }, [answer, savedAnswer, permission, minChars]);
 
   const disabledMessage = useMemo(() => {
     if (permission === PermissionLevel.Read) {
@@ -74,6 +92,10 @@ const PlayerView = (): JSX.Element => {
     });
   };
 
+  // todo: figure out how to handle min/max/num rows
+
+  // todo: figure out how to handle min/max chars
+
   return (
     <div data-cy={PLAYER_VIEW_CY}>
       <Box p={2}>
@@ -86,17 +108,33 @@ const PlayerView = (): JSX.Element => {
           alignItems="center"
           justifyContent="space-around"
         >
-          <Grid item xs={9} sm={10}>
-            <TextField
-              inputProps={{
-                'data-cy': ANSWER_CY,
-              }}
-              fullWidth
-              value={answer}
-              onChange={handleChangeAnswer}
-            />
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <OutlinedInput
+                id="input-component"
+                inputProps={{
+                  'data-cy': ANSWER_CY,
+                  maxlength: maxChars || undefined,
+                  minlength: minChars || undefined,
+                }}
+                multiline
+                minRows={minRows}
+                maxRows={maxRows}
+                rows={numRows}
+                value={answer}
+                onChange={handleChangeAnswer}
+              />
+              <FormHelperText
+                id="input-component-helper-text"
+                error={answer.length === maxChars}
+              >
+                {maxChars
+                  ? `${answer.length} / ${maxChars} ${t('CHARACTERS')}`
+                  : ''}
+              </FormHelperText>
+            </FormControl>
           </Grid>
-          <Grid item xs={3} sm={2}>
+          <Grid item xs={12}>
             <SubmitButton disabled={disableSave} handler={handleSubmitAnswer}>
               {disableSave ? disabledMessage : t('SAVE_BUTTON')}
             </SubmitButton>
