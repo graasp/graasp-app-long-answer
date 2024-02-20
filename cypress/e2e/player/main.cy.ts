@@ -11,7 +11,7 @@ import {
 import { USER_ANSWER_CONTENT } from '../../fixtures/appData';
 import { ANSWER_SETTING, QUESTION_SETTING } from '../../fixtures/appSettings';
 
-describe('player view as reader', () => {
+describe('player view as anonymous', () => {
   beforeEach(() => {
     cy.setUpApi(
       {
@@ -19,7 +19,7 @@ describe('player view as reader', () => {
       },
       {
         context: Context.Player,
-        permission: PermissionLevel.Read,
+        memberId: undefined,
       },
     );
     cy.visit(`/`);
@@ -51,7 +51,7 @@ describe('player view as reader', () => {
   });
 });
 
-describe('player view as writer', () => {
+describe('player view as reader', () => {
   beforeEach(() => {
     cy.setUpApi(
       {
@@ -59,7 +59,7 @@ describe('player view as writer', () => {
       },
       {
         context: Context.Player,
-        permission: PermissionLevel.Write,
+        permission: PermissionLevel.Read,
       },
     );
     cy.visit(`/`);

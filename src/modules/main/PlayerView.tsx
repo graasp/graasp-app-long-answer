@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 
 import { useLocalContext } from '@graasp/apps-query-client';
-import { AppData, PermissionLevel } from '@graasp/sdk';
+import { AppData } from '@graasp/sdk';
 
 import isEqual from 'lodash.isequal';
 import sortBy from 'lodash.sortby';
@@ -29,7 +29,7 @@ function isAnswer(appData: AppData): boolean {
 
 const PlayerView = (): JSX.Element => {
   const { t } = useTranslation('translations', { keyPrefix: 'PLAYER' });
-  const { permission } = useLocalContext();
+  const { memberId } = useLocalContext();
   const {
     question,
     // answer: answerSavedState,
@@ -55,29 +55,21 @@ const PlayerView = (): JSX.Element => {
   const [answer, setAnswer] = useState<string>(savedAnswer);
 
   const disableSave = useMemo(() => {
-    // disable if permission is read
-    if (permission === PermissionLevel.Read) {
+    // disable if there is no user (logged out or anonymous)
+    if (!memberId) {
       return true;
     }
     // disable if answer is equal
-    if (isEqual(savedAnswer, answer)) {
-      return true;
-    }
-
-    // disable if minimum length is not achieved
-    if (answer.length < minChars) {
-      return true;
-    }
-
-    return false;
-  }, [answer, savedAnswer, permission, minChars]);
+    return isEqual(savedAnswer, answer);
+  }, [answer, savedAnswer, memberId]);
 
   const disabledMessage = useMemo(() => {
-    if (permission === PermissionLevel.Read) {
+    // disable if there is no user (logged out or anonymous)
+    if (!memberId) {
       return t('SAVE_BUTTON');
     }
     return t('SAVED_MESSAGE');
-  }, [permission, t]);
+  }, [memberId, t]);
 
   const handleChangeAnswer = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target;
