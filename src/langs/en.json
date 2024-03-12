@@ -27,7 +27,8 @@
           "KEY_LABEL": "Key",
           "VALUE_LABEL": "Value",
           "ANSWER_LABEL": "Answer"
-        }
+        },
+        "HELPER_TEXT": "[Optional] If there is one correct answer, then you can include it here and you can automatically see who submitted a correct answer."
       },
       "GENERAL": {
         "TITLE": "General"
