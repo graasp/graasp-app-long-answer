@@ -24,7 +24,7 @@ const AnswersView: FC = () => {
 
   return (
     <Stack spacing={2}>
-      <Typography variant="h1">{t('TITLE')}</Typography>
+      <Typography variant="h3">{t('TITLE')}</Typography>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="answers table">
           <TableHead>

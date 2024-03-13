@@ -25,6 +25,7 @@ const AnswerSettings: FC<PropTypes> = ({ answer, onChange }) => {
         }}
         value={answerContent}
         onChange={(e) => onChange({ content: e.target.value })}
+        helperText={t('SETTINGS.ANSWER.HELPER_TEXT')}
       />
     </Stack>
   );

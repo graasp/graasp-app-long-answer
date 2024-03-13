@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -39,20 +39,23 @@ const PlayerView = (): JSX.Element => {
   const { data: appData } = hooks.useAppData();
   const { mutate: postAppData } = mutations.usePostAppData();
 
+  const [answer, setAnswer] = useState<string>('');
+  const [savedAnswer, setSavedAnswer] = useState<string>('');
+
   // use effect to get required app data
-  let savedAnswer = '';
-
-  if (appData) {
-    // only show the last answer
-    const savedAnswerObject = sortBy(appData, ['createdAt'])
-      .reverse()
-      .find(isAnswer) as AppData<UserAnswer>;
-    if (savedAnswerObject) {
-      savedAnswer = savedAnswerObject.data.answer ?? '';
+  useEffect(() => {
+    if (appData) {
+      // only show the last answer
+      const savedAnswerObject = sortBy(appData, ['createdAt'])
+        .reverse()
+        .find(isAnswer) as AppData<UserAnswer>;
+      if (savedAnswerObject) {
+        const savedAnswerText = savedAnswerObject.data.answer ?? '';
+        setAnswer(savedAnswerText);
+        setSavedAnswer(savedAnswerText);
+      }
     }
-  }
-
-  const [answer, setAnswer] = useState<string>(savedAnswer);
+  }, [appData]);
 
   const disableSave = useMemo(() => {
     // disable if there is no user (logged out or anonymous)
