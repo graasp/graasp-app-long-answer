@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/graasp/graasp-app-long-answer/compare/v1.0.0...v1.0.1) (2024-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @emotion/react to v11.11.4 ([fc960f9](https://github.com/graasp/graasp-app-long-answer/commit/fc960f967deb40105d63f98de53732a7cee8324a))
+
 ## 1.0.0 (2024-03-13)
 
 
