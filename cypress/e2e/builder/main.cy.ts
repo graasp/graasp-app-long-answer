@@ -110,7 +110,7 @@ describe('builder settings as admin without configuration', () => {
   });
 });
 
-describe('builder settings as admin with question and answer.', () => {
+describe('builder settings as admin with question and answer', () => {
   beforeEach(() => {
     cy.setUpApi(
       {
@@ -166,7 +166,7 @@ describe('builder settings as admin with question and answer.', () => {
   });
 });
 
-describe('builder answers as admin with question and answer.', () => {
+describe('builder answers as admin with question and answer', () => {
   beforeEach(() => {
     cy.setUpApi(
       {

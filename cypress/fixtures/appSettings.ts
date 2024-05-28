@@ -29,3 +29,15 @@ export const ANSWER_SETTING = {
   updatedAt: new Date().toISOString(),
   item: MOCK_SERVER_DISCRIMINATED_ITEM,
 };
+
+export const GENERAL_SETTING = {
+  id: '2',
+  name: 'general',
+  data: {
+    required: true,
+    autosubmit: false,
+  },
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+  item: MOCK_SERVER_DISCRIMINATED_ITEM,
+};

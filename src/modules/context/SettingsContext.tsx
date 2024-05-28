@@ -3,6 +3,7 @@ import { FC, ReactElement, createContext, useContext } from 'react';
 import {
   AnswerSettings,
   CharsSettings,
+  GeneralSettings,
   QuestionSettingsType,
   RowsSettings,
 } from '@/config/appSettings';
@@ -17,6 +18,7 @@ type AllSettingsType = {
   answer: AnswerSettings;
   rows: RowsSettings;
   chars: CharsSettings;
+  general: GeneralSettings;
 };
 
 // default values for the data property of settings by name
@@ -27,16 +29,22 @@ const defaultSettingsValues: AllSettingsType = {
   answer: {
     content: '',
   },
+  // todo: define max rows and min rows in settings
   // zero values means the setting is unset
   rows: {
-    minRows: 0,
+    minRows: 3,
     maxRows: 0,
     numRows: 0,
   },
+  // todo: define max and min chars in settings
   // zero values means the setting is unset
   chars: {
     minChars: 0,
     maxChars: 0,
+  },
+  general: {
+    required: false,
+    autosubmit: false,
   },
 };
 
@@ -47,6 +55,7 @@ const ALL_SETTING_NAMES = [
   'answer',
   'rows',
   'chars',
+  'general',
 ] as const;
 
 // automatically generated types

@@ -22,6 +22,11 @@ export const makeUserAnswerCorrectCellCy = (index: number | string): string =>
 export const QUESTION_CY = 'question';
 export const ANSWER_CY = 'answer';
 export const ANSWER_SUBMIT_BUTTON_CY = 'answer-submit-button';
+export const RESET_BTN_CY = 'reset-button';
+
+export const REQUIRED_CHIP_CY = 'required-chip';
+export const SAVED_CHIP_CY = 'saved-chip';
+export const SUBMITTED_CHIP_CY = 'submitted-chip';
 
 export const buildDataCy = (selector: string): string =>
   `[data-cy=${selector}]`;
