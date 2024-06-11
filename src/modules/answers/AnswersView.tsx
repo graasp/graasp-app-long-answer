@@ -14,8 +14,7 @@ import Typography from '@mui/material/Typography';
 import sortBy from 'lodash.sortby';
 import uniqBy from 'lodash.uniqby';
 
-import useUserAnswers from '@/hooks/useUserAnswers';
-
+import useUserAnswers from '../context/UserAnswersContext';
 import UserAnswerRow from './UserAnswerRow';
 
 const AnswersView: FC = () => {

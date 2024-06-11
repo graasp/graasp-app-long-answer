@@ -1,5 +1,6 @@
 {
   "translations": {
+    "VERSION": "Version {{version}}",
     "ANSWERS": {
       "TITLE": "Answers",
       "TABLE": {
@@ -31,13 +32,26 @@
         "HELPER_TEXT": "[Optional] If there is one correct answer, then you can include it here and you can automatically see who submitted a correct answer."
       },
       "GENERAL": {
-        "TITLE": "General"
+        "TITLE": "General",
+        "REQUIRED_SWITCH_LABEL": "Mark the question as required.",
+        "AUTOSUBMIT_SWITCH_LABEL": "Submit the answer automatically",
+        "AUTOSUBMIT_MORE_INFO": "If this option is not enabled, the users will have to click on a submit button to send his or her answer."
       }
     },
-    "PLAYER": {
+    "QUESTION_VIEW": {
+      "CHARACTERS": "characters",
+      "PLS_LOGIN_TO_SUBMIT": "To submit your answer, please login.",
       "SAVED_MESSAGE": "Saved",
       "SAVE_BUTTON": "Save",
-      "CHARACTERS": "characters"
+      "SUBMIT_OK_TOOLTIP": "Your answer has been submitted.",
+      "SUBMIT_OK_HELPER": "Submitted",
+      "SAVED_TOOLTIP": "Your answer has been saved.",
+      "SAVED_HELPER": "Saved",
+      "RESET_ANSWER": "Reset your answer.",
+      "REQUIRED_CHIP": "Required",
+      "REQUIRED_TOOLTIP": "This question requires an answer.",
+      "SUBMIT": "Submit",
+      "RESET": "Reset"
     }
   }
 }

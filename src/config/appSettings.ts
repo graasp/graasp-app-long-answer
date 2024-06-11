@@ -16,3 +16,8 @@ export type CharsSettings = {
   minChars: number;
   maxChars: number;
 };
+
+export type GeneralSettings = {
+  required: boolean;
+  autosubmit: boolean;
+};

@@ -9,11 +9,17 @@ import Typography from '@mui/material/Typography';
 
 import isEqual from 'lodash.isequal';
 
-import { AnswerSettings, QuestionSettingsType } from '@/config/appSettings';
+import { version } from '@/../package.json';
+import {
+  AnswerSettings,
+  GeneralSettings,
+  QuestionSettingsType,
+} from '@/config/appSettings';
 import { SETTINGS_SAVE_BTN_CY, SETTINGS_VIEW_CY } from '@/config/selectors';
 
 import { useSettings } from '../context/SettingsContext';
 import AnswerSettingsComponent from './AnswersSettings';
+import GeneralSettingsEdit from './GeneralSettings';
 import QuestionSettingsComponent from './QuestionSettings';
 
 const SettingsView: FC = () => {
@@ -21,16 +27,19 @@ const SettingsView: FC = () => {
   const {
     question: questionSavedState,
     answer: answerSavedState,
+    general: generalSavedState,
     saveSettings,
   } = useSettings();
 
   const [question, setQuestion] =
     useState<QuestionSettingsType>(questionSavedState);
   const [answer, setAnswer] = useState<AnswerSettings>(answerSavedState);
+  const [general, setGeneral] = useState<GeneralSettings>(generalSavedState);
 
   const saveAllSettings = (): void => {
     saveSettings('question', question);
     saveSettings('answer', answer);
+    saveSettings('general', general);
   };
 
   useEffect(() => setQuestion(questionSavedState), [questionSavedState]);
@@ -41,16 +50,26 @@ const SettingsView: FC = () => {
   const disableSave = useMemo(() => {
     if (
       isEqual(questionSavedState, question) &&
-      isEqual(answerSavedState, answer)
+      isEqual(answerSavedState, answer) &&
+      isEqual(generalSavedState, general)
     ) {
       return true;
     }
     return false;
-  }, [answer, answerSavedState, question, questionSavedState]);
+  }, [
+    answer,
+    answerSavedState,
+    general,
+    generalSavedState,
+    question,
+    questionSavedState,
+  ]);
 
   return (
     <Stack data-cy={SETTINGS_VIEW_CY} spacing={2}>
       <Typography variant="h3">{t('SETTINGS.TITLE')}</Typography>
+      <Typography variant="caption">{t('VERSION', { version })}</Typography>
+      <GeneralSettingsEdit general={general} onChange={setGeneral} />
       <QuestionSettingsComponent
         question={question}
         onChange={(newSetting: QuestionSettingsType) => {
