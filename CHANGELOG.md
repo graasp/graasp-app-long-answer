@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/graasp/graasp-app-long-answer/compare/v1.0.0...v1.1.0) (2024-06-11)
+
+
+### Features
+
+* add autosave and required options ([#29](https://github.com/graasp/graasp-app-long-answer/issues/29)) ([f151cab](https://github.com/graasp/graasp-app-long-answer/commit/f151cab7437a5aa4ca3632216dc0c433b75e087f))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @emotion/react to v11.11.4 ([fc960f9](https://github.com/graasp/graasp-app-long-answer/commit/fc960f967deb40105d63f98de53732a7cee8324a))
+
 ## 1.0.0 (2024-03-13)
 
 
