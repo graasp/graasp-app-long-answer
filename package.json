@@ -94,7 +94,7 @@
     "nyc": "15.1.0",
     "prettier": "3.2.5",
     "uuid": "9.0.1",
-    "vite": "5.2.11",
+    "vite": "5.2.13",
     "vite-plugin-checker": "0.6.4",
     "vite-plugin-istanbul": "5.0.0"
   },
