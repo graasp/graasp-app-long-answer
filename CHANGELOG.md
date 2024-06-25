@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.1](https://github.com/graasp/graasp-app-long-answer/compare/v1.1.0...v1.1.1) (2024-06-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to v20.12.14 ([b2f1273](https://github.com/graasp/graasp-app-long-answer/commit/b2f12731c701a16bb37b3e744738bcc72f1d2db1))
+* **deps:** update graasp packages ([eb89d26](https://github.com/graasp/graasp-app-long-answer/commit/eb89d264c8f351cc53f9e83788df7c02ec9d94a6))
+* **deps:** update mui (non-major) to v5.15.20 ([6a043b6](https://github.com/graasp/graasp-app-long-answer/commit/6a043b6dd7480d66aaed5f2c9224074b09e0a280))
+* update local state conditionally and remove white background ([#45](https://github.com/graasp/graasp-app-long-answer/issues/45)) ([137cecd](https://github.com/graasp/graasp-app-long-answer/commit/137cecd68a0d7ef95fbecbdf194ef6d3af622c03))
+
 ## [1.1.0](https://github.com/graasp/graasp-app-long-answer/compare/v1.0.0...v1.1.0) (2024-06-11)
 
 
