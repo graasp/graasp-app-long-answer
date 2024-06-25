@@ -33,12 +33,14 @@ type UserAnswersContextType = {
   submitAnswer: () => void;
   deleteAnswer: (id?: UserAnswerAppData['id']) => void;
   allAnswersAppData?: UserAnswerAppData[];
+  status: 'loading' | 'error' | 'success';
 };
 
 const defaultContextValue: UserAnswersContextType = {
   setAnswer: () => null,
   submitAnswer: () => null,
   deleteAnswer: () => null,
+  status: 'loading',
 };
 
 const UserAnswersContext =
@@ -47,7 +49,7 @@ const UserAnswersContext =
 export const UserAnswersProvider: FC<{
   children: ReactElement | ReactElement[];
 }> = ({ children }) => {
-  const { data, isSuccess } = hooks.useAppData<UserAnswer>({
+  const { data, isSuccess, status } = hooks.useAppData<UserAnswer>({
     type: AppDataType.UserAnswer,
   });
   const [userAnswerAppData, setUserAnswerAppData] =
@@ -150,12 +152,14 @@ export const UserAnswersProvider: FC<{
       submitAnswer,
       allAnswersAppData: isAdmin ? allAnswersAppData : undefined,
       deleteAnswer,
+      status,
     }),
     [
       allAnswersAppData,
       deleteAnswer,
       isAdmin,
       setAnswer,
+      status,
       submitAnswer,
       userAnswerAppData?.data,
     ],
