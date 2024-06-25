@@ -49,9 +49,11 @@ const QuestionView = (): JSX.Element => {
     deleteAnswer,
     submitAnswer,
     setAnswer: setSavedAnswer,
+    status,
   } = useUserAnswers();
 
   const [answer, setAnswer] = useState<string>('');
+  const [isInit, setIsInit] = useState<boolean>(false);
 
   const userAuthentified = useMemo(
     () => typeof memberId === 'string' && memberId.length > 0,
@@ -60,8 +62,16 @@ const QuestionView = (): JSX.Element => {
 
   // Update the answer if the stored value change
   useEffect(() => {
-    setAnswer(userAnswer?.answer ?? '');
-  }, [userAnswer]);
+    if (
+      status === 'success' &&
+      answer.length === 0 &&
+      !isInit &&
+      typeof userAnswer !== 'undefined'
+    ) {
+      setAnswer(userAnswer?.answer ?? '');
+      setIsInit(true);
+    }
+  }, [answer.length, isInit, status, userAnswer]);
   const answerStatus = useMemo(() => userAnswer?.status, [userAnswer?.status]);
 
   const showSubmitButton = useMemo(
@@ -162,7 +172,10 @@ const QuestionView = (): JSX.Element => {
               <Button
                 disabled={!userAnswer}
                 variant="outlined"
-                onClick={() => deleteAnswer()}
+                onClick={() => {
+                  setAnswer('');
+                  deleteAnswer();
+                }}
                 startIcon={<ReplayIcon />}
                 data-cy={RESET_BTN_CY}
               >
